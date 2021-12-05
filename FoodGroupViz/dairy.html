@@ -79,7 +79,7 @@ var svg = d3.select("#my_dataviz")
     .attr("height", height)
 
 // Read data
-d3.csv("../nutrition_foodgroups.csv", function(data) {
+d3.csv("https://raw.githubusercontent.com/ammacdonald2/trying/main/nutri.csv", function(data) {
 
   // Filter a bit the data -> more than 1 million inhabitants
   //data = data.filter(function(d){ return d.calories>10 })
