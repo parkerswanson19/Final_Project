@@ -83,7 +83,8 @@ d3.csv("https://raw.githubusercontent.com/ammacdonald2/trying/main/nutri.csv", f
 
   // Filter a bit the data -> more than 1 million inhabitants
   //data = data.filter(function(d){ return d.calories>10 })
-  data = data.slice(0, 20);
+  //data = data.slice(0, 20);
+  data = data.filter(function(d){ return d.food_group == "grains" })
 
   // Color palette for continents?
   var color = d3.scaleOrdinal()
