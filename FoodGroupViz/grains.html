@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 
+
 <!-- Load d3.js -->
 <script src="https://d3js.org/d3.v4.js"></script>
 
@@ -51,12 +52,16 @@ body {
 
 </style>
 
+
+
+
 <div class="header">
   <h1>Grains</h1>
 </div>
 
 <!-- Simple button -->
 <a href="../index.html" class="button">Home Page</a>
+<a class='button' onclick="toggleText()">Toggle Categories</a>
 
 <div id="eat_banner">
   <h1 class="eat_title">Never eat</h1>
@@ -78,6 +83,15 @@ body {
 
 <script>
 
+function toggleText() {
+var text = document.getElementById("eat_banner");
+if (text.style.display === "none") {
+text.style.display = "block";
+} else {
+text.style.display = "none";
+}
+}
+
 // Physics of bubbles inspired from https://www.d3-graph-gallery.com/graph/circularpacking_template.html
 
 // Set the dimensions and margins of the graph
@@ -95,6 +109,7 @@ d3.csv("https://raw.githubusercontent.com/ammacdonald2/trying/main/nutri.csv", f
 
   // Filter a bit the data by food groups
   data = data.filter(function(d){ return d.food_group == "grains" })
+  //data = data.filter(function(d){ return d.calories = "63") })
 
   // Color palette
   var color = d3.scaleOrdinal()
@@ -140,6 +155,7 @@ d3.csv("https://raw.githubusercontent.com/ammacdonald2/trying/main/nutri.csv", f
     .data(data)
     .enter()
     .append("circle")
+      //.html('<u>' + d.name + '</u>')
       .attr("class", "node")
       .attr("r", function(d){ return size(d.calories)})
       .attr("cx", width / 2)
@@ -156,6 +172,7 @@ d3.csv("https://raw.githubusercontent.com/ammacdonald2/trying/main/nutri.csv", f
            .on("start", dragstarted)
            .on("drag", dragged)
            .on("end", dragended));
+
 
   // Features of the forces applied to the circles
   var simulation = d3.forceSimulation()

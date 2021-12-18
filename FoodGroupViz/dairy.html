@@ -59,6 +59,7 @@ body {
 
 <!-- Simple button -->
 <a href="../index.html" class="button">Home Page</a>
+<a class='button' onclick="toggleText()">Toggle Categories</a>
 
 <div id="eat_banner">
   <h1 class="eat_title">Never eat</h1>
@@ -80,6 +81,14 @@ body {
 
 <script>
 
+function toggleText() {
+var text = document.getElementById("eat_banner");
+if (text.style.display === "none") {
+text.style.display = "block";
+} else {
+text.style.display = "none";
+}
+}
 // Physics of bubbles inspired from https://www.d3-graph-gallery.com/graph/circularpacking_template.html
 
 
